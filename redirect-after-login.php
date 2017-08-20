@@ -37,8 +37,13 @@ load_plugin_textdomain( 'mtral', false, dirname( plugin_basename( __FILE__ ) ) .
 // Include admin settings
 require_once(MTRAL_PATH.'redirect-after-login-admin.php');
 
-function redirect_after_login_per_role()
+function redirect_after_login_per_role($redirect_to = '')
 {
+	//Check if a direct is already set
+	if('' != $redirect_to){
+		return $redirect_to;
+	}
+	
 	//retrieve current user info 
 	global $wp_roles, $user;
 	    
